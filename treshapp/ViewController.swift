@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIOClientSwift
+// import SocketIOClientSwift
 import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
