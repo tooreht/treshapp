@@ -15,12 +15,13 @@ struct Sensor {
     var guid:String
 }
 
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+// CocoaMQTTDelegate
+class SensorListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // These strings will be the data for the table view cells
-//    let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
+    // let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
     var sensors = [Sensor]()
+    var selectedSensor:Sensor!
     
     let cellReuseIdentifier = "cell"
     
@@ -51,8 +52,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // method to run when table view cell is tapped
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You tapped cell number \(indexPath.row).")
+        
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!
+        // let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        
+        selectedSensor = self.sensors[indexPath.row]
+        self.performSegueWithIdentifier("SensorDetail", sender: self)
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "SensorDetail") {
+            
+            // initialize new view controller and cast it as your view controller
+            let viewController = segue.destinationViewController as! SensorController
+            // your new view controller should have property that will store passed value
+            viewController.sensor = self.selectedSensor
+        }
+        
+    }
+    
     func getSensors() {
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -70,7 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
         
         let parameters = [
-            "centerUID": "7F73-24E5-EBAB-4B71-A62F-98D4FDA02809",
+            "centerUID": "7F73-24E5-EBAB-4B71-A62F-98D4FDA02809", // aka licence
 //            "sensorUID": "35aff35c-c8d3-e0cd-40ab-2c797ae102a7",
             
         ]
@@ -93,7 +113,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 self.tableView.reloadData()
         }
-        
         
         
 //        let socket = SocketIOClient(socketURL: NSURL(string: "http://siot.net:15781")!, options: [.Log(true), .ForcePolling(true)])
@@ -124,7 +143,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
