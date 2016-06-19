@@ -9,22 +9,29 @@
 import UIKit
 import CocoaMQTT
 
-class SensorController: UIViewController {
+class SensorViewController: UIViewController {
     
     @IBOutlet weak var displayLabel: UILabel!
     
     var sensor:Sensor!
     var mqtt: CocoaMQTT?
-    
-    @IBAction func saySomethingTapped(sender: UIButton) {
-        displayLabel.text = "Hello World!"
-    }
+    var topic:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.connectMqtt()
+        
+        self.topic = "siot/DAT/7F73-24E5-EBAB-4B71-A62F-98D4FDA02809/" + self.sensor.guid
         displayLabel.text = sensor.name
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillResignActiveNotification, object: nil, queue: nil, usingBlock: { notification in
+            self.disconnectMqtt()
+        })
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: nil, usingBlock: { notification in
+            self.connectMqtt()
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,6 +39,14 @@ class SensorController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.connectMqtt()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.disconnectMqtt()
+    }
+    
     func connectMqtt() {
         //        let mqttCli = CocoaMQTTCli()
         let clientIdPid = "CocoaMQTT-" + String(NSProcessInfo().processIdentifier)
@@ -46,10 +61,20 @@ class SensorController: UIViewController {
         
         //        dispatch_main()
     }
+    
+    func disconnectMqtt() {
+        print("unsubscribe from topic " + self.topic)
+        self.mqtt?.unsubscribe(self.topic)
+        self.mqtt?.disconnect()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
 
 
-extension SensorController: CocoaMQTTDelegate {
+extension SensorViewController: CocoaMQTTDelegate {
     func mqtt(mqtt: CocoaMQTT, didConnect host: String, port: Int) {
         print("didConnect \(host):\(port)")
     }
@@ -57,9 +82,8 @@ extension SensorController: CocoaMQTTDelegate {
     func mqtt(mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         //print("didConnectAck \(ack.rawValue)")
         if ack == .ACCEPT {
-            //            mqtt.subscribe("chat/room/animals/client/+", qos: CocoaMQTTQOS.QOS1)
-            mqtt.subscribe("siot/DAT/7F73-24E5-EBAB-4B71-A62F-98D4FDA02809/e42093a5-f420-894a-cf1b-1c8215014454", qos: CocoaMQTTQOS.QOS1)
-            mqtt.subscribe("siot/DAT/7F73-24E5-EBAB-4B71-A62F-98D4FDA02809/35aff35c-c8d3-e0cd-40ab-2c797ae102a7", qos: CocoaMQTTQOS.QOS1)
+            print(topic)
+            mqtt.subscribe(topic, qos: CocoaMQTTQOS.QOS1)
             mqtt.ping()
             
             //            let chatViewController = storyboard?.instantiateViewControllerWithIdentifier("ChatViewController") as? ChatViewController

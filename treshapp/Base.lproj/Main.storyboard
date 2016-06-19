@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Sensor List Controller-->
+        <!--Sensor List View Controller-->
         <scene sceneID="JIy-Pl-fkv">
             <objects>
-                <viewController id="3CE-Hu-Bft" customClass="SensorListController" customModule="treshapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3CE-Hu-Bft" customClass="SensorListViewController" customModule="treshapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u6X-Rg-aZI"/>
                         <viewControllerLayoutGuide type="bottom" id="7ed-sb-Vpz"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="2100" y="-531"/>
         </scene>
-        <!--Sensor Controller-->
+        <!--Sensor View Controller-->
         <scene sceneID="WmL-KC-kUP">
             <objects>
-                <viewController id="9aN-Yq-4c5" customClass="SensorController" customModule="treshapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9aN-Yq-4c5" customClass="SensorViewController" customModule="treshapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sDP-xR-msW"/>
                         <viewControllerLayoutGuide type="bottom" id="d3I-Rk-n4B"/>

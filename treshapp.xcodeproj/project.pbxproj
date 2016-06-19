@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F3B939B1CFE1E4F000C1126 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3B939A1CFE1E4F000C1126 /* SensorController.swift */; };
+		4F3B939B1CFE1E4F000C1126 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3B939A1CFE1E4F000C1126 /* SensorViewController.swift */; };
 		4F51D7151CD122CF006FC08C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F51D7141CD122CF006FC08C /* Alamofire.framework */; };
 		4F51D7161CD122CF006FC08C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F51D7141CD122CF006FC08C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F7567131CF4D39D0087F7B3 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7567101CF4D39D0087F7B3 /* CocoaAsyncSocket.framework */; };
@@ -17,7 +17,7 @@
 		4F75671A1CF4D81A0087F7B3 /* CocoaMQTT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7567111CF4D39D0087F7B3 /* CocoaMQTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F75671C1CF4D81A0087F7B3 /* MSWeakTimer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7567121CF4D39D0087F7B3 /* MSWeakTimer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F84D6651CCFEB3E001B982A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84D6641CCFEB3E001B982A /* AppDelegate.swift */; };
-		4F84D6671CCFEB3E001B982A /* SensorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84D6661CCFEB3E001B982A /* SensorListController.swift */; };
+		4F84D6671CCFEB3E001B982A /* SensorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84D6661CCFEB3E001B982A /* SensorListViewController.swift */; };
 		4F84D66A1CCFEB3E001B982A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F84D6681CCFEB3E001B982A /* Main.storyboard */; };
 		4F84D66C1CCFEB3E001B982A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F84D66B1CCFEB3E001B982A /* Assets.xcassets */; };
 		4F84D66F1CCFEB3E001B982A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F84D66D1CCFEB3E001B982A /* LaunchScreen.storyboard */; };
@@ -60,14 +60,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4F3B939A1CFE1E4F000C1126 /* SensorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorController.swift; sourceTree = "<group>"; };
+		4F3B939A1CFE1E4F000C1126 /* SensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
 		4F51D7141CD122CF006FC08C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		4F7567101CF4D39D0087F7B3 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		4F7567111CF4D39D0087F7B3 /* CocoaMQTT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaMQTT.framework; path = Carthage/Build/iOS/CocoaMQTT.framework; sourceTree = "<group>"; };
 		4F7567121CF4D39D0087F7B3 /* MSWeakTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MSWeakTimer.framework; path = Carthage/Build/iOS/MSWeakTimer.framework; sourceTree = "<group>"; };
 		4F84D6611CCFEB3E001B982A /* treshapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = treshapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F84D6641CCFEB3E001B982A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F84D6661CCFEB3E001B982A /* SensorListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListController.swift; sourceTree = "<group>"; };
+		4F84D6661CCFEB3E001B982A /* SensorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListViewController.swift; sourceTree = "<group>"; };
 		4F84D6691CCFEB3E001B982A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F84D66B1CCFEB3E001B982A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F84D66E1CCFEB3E001B982A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -137,12 +137,12 @@
 			isa = PBXGroup;
 			children = (
 				4F84D6641CCFEB3E001B982A /* AppDelegate.swift */,
-				4F84D6661CCFEB3E001B982A /* SensorListController.swift */,
+				4F84D6661CCFEB3E001B982A /* SensorListViewController.swift */,
 				4F84D6681CCFEB3E001B982A /* Main.storyboard */,
 				4F84D66B1CCFEB3E001B982A /* Assets.xcassets */,
 				4F84D66D1CCFEB3E001B982A /* LaunchScreen.storyboard */,
 				4F84D6701CCFEB3E001B982A /* Info.plist */,
-				4F3B939A1CFE1E4F000C1126 /* SensorController.swift */,
+				4F3B939A1CFE1E4F000C1126 /* SensorViewController.swift */,
 			);
 			path = treshapp;
 			sourceTree = "<group>";
@@ -319,9 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F84D6671CCFEB3E001B982A /* SensorListController.swift in Sources */,
+				4F84D6671CCFEB3E001B982A /* SensorListViewController.swift in Sources */,
 				4F84D6651CCFEB3E001B982A /* AppDelegate.swift in Sources */,
-				4F3B939B1CFE1E4F000C1126 /* SensorController.swift in Sources */,
+				4F3B939B1CFE1E4F000C1126 /* SensorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
