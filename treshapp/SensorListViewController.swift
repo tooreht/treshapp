@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SensorListViewController.swift
 //  treshapp
 //
 //  Created by Marc Zimmermann on 26/04/16.
@@ -9,10 +9,6 @@
 import UIKit
 import Alamofire
 
-struct Sensor {
-    var name:String
-    var guid:String
-}
 
 class SensorListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -36,10 +32,7 @@ class SensorListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // create a cell for each table view row
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
-        
-//        cell.textLabel?.text = self.animals[indexPath.row]
         cell.textLabel?.text = self.sensors[indexPath.row].name
         
         return cell
@@ -71,16 +64,17 @@ class SensorListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func getSensors() {
         // Do any additional setup after loading the view, typically from a nib.
+
         let parameters = [
-            "centerUID": "7F73-24E5-EBAB-4B71-A62F-98D4FDA02809", // aka licence
+            "centerUID": AppConstants.centerGUID,
 //            "sensorUID": "35aff35c-c8d3-e0cd-40ab-2c797ae102a7",
         ]
-        Alamofire.request(.POST, "http://siot.net:15780/getsensor", parameters: parameters)
+        Alamofire.request(.POST, AppConstants.siotURL.absoluteString + "getsensor", parameters: parameters)
             .responseJSON { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
-                print(response.result)   // result of response serialization
+                print(response.result)   // result of response serializatio
                 
                 if let JSON = response.result.value {
                     print("JSON: \(JSON)")

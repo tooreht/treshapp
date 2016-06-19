@@ -1,5 +1,5 @@
 //
-//  SensorController.swift
+//  SensorViewController.swift
 //  treshapp
 //
 //  Created by Marc Zimmermann on 31/05/16.
@@ -21,17 +21,16 @@ class SensorViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.topic = "siot/DAT/7F73-24E5-EBAB-4B71-A62F-98D4FDA02809/" + self.sensor.guid
+        self.topic = "siot/DAT/\(AppConstants.centerGUID)/\(self.sensor.guid)"
         displayLabel.text = sensor.name
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillResignActiveNotification, object: nil, queue: nil, usingBlock: { notification in
-            self.disconnectMqtt()
-        })
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: nil, usingBlock: { notification in
             self.connectMqtt()
         })
         
+        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillResignActiveNotification, object: nil, queue: nil, usingBlock: { notification in
+            self.disconnectMqtt()
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +49,7 @@ class SensorViewController: UIViewController {
     func connectMqtt() {
         //        let mqttCli = CocoaMQTTCli()
         let clientIdPid = "CocoaMQTT-" + String(NSProcessInfo().processIdentifier)
-        let mqtt = CocoaMQTT(clientId: clientIdPid, host: "siot.net", port: 1883)
+        let mqtt = CocoaMQTT(clientId: clientIdPid, host: AppConstants.siotURL.host!, port: 1883)
         //        mqtt.username = "test"
         //        mqtt.password = "public"
         mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
@@ -85,10 +84,6 @@ extension SensorViewController: CocoaMQTTDelegate {
             print(topic)
             mqtt.subscribe(topic, qos: CocoaMQTTQOS.QOS1)
             mqtt.ping()
-            
-            //            let chatViewController = storyboard?.instantiateViewControllerWithIdentifier("ChatViewController") as? ChatViewController
-            //            chatViewController?.mqtt = mqtt
-            //            navigationController!.pushViewController(chatViewController!, animated: true)
         }
         
     }

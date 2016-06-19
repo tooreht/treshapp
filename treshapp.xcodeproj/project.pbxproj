@@ -23,6 +23,8 @@
 		4F84D66F1CCFEB3E001B982A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F84D66D1CCFEB3E001B982A /* LaunchScreen.storyboard */; };
 		4F84D67A1CCFEB3E001B982A /* treshappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84D6791CCFEB3E001B982A /* treshappTests.swift */; };
 		4F84D6851CCFEB3E001B982A /* treshappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84D6841CCFEB3E001B982A /* treshappUITests.swift */; };
+		4FCDFA031D16D343008D9266 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDFA021D16D343008D9266 /* Sensor.swift */; };
+		4FCDFA051D16D39F008D9266 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDFA041D16D39F008D9266 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		4F84D6801CCFEB3E001B982A /* treshappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = treshappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F84D6841CCFEB3E001B982A /* treshappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treshappUITests.swift; sourceTree = "<group>"; };
 		4F84D6861CCFEB3E001B982A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FCDFA021D16D343008D9266 /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		4FCDFA041D16D39F008D9266 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,13 +140,13 @@
 		4F84D6631CCFEB3E001B982A /* treshapp */ = {
 			isa = PBXGroup;
 			children = (
+				4FCDFA011D16D31F008D9266 /* DataContainers */,
+				4FCDFA001D16D2C7008D9266 /* ViewControllers */,
 				4F84D6641CCFEB3E001B982A /* AppDelegate.swift */,
-				4F84D6661CCFEB3E001B982A /* SensorListViewController.swift */,
 				4F84D6681CCFEB3E001B982A /* Main.storyboard */,
 				4F84D66B1CCFEB3E001B982A /* Assets.xcassets */,
 				4F84D66D1CCFEB3E001B982A /* LaunchScreen.storyboard */,
 				4F84D6701CCFEB3E001B982A /* Info.plist */,
-				4F3B939A1CFE1E4F000C1126 /* SensorViewController.swift */,
 			);
 			path = treshapp;
 			sourceTree = "<group>";
@@ -163,6 +167,24 @@
 				4F84D6861CCFEB3E001B982A /* Info.plist */,
 			);
 			path = treshappUITests;
+			sourceTree = "<group>";
+		};
+		4FCDFA001D16D2C7008D9266 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F84D6661CCFEB3E001B982A /* SensorListViewController.swift */,
+				4F3B939A1CFE1E4F000C1126 /* SensorViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FCDFA011D16D31F008D9266 /* DataContainers */ = {
+			isa = PBXGroup;
+			children = (
+				4FCDFA021D16D343008D9266 /* Sensor.swift */,
+				4FCDFA041D16D39F008D9266 /* AppConstants.swift */,
+			);
+			name = DataContainers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +342,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F84D6671CCFEB3E001B982A /* SensorListViewController.swift in Sources */,
+				4FCDFA051D16D39F008D9266 /* AppConstants.swift in Sources */,
+				4FCDFA031D16D343008D9266 /* Sensor.swift in Sources */,
 				4F84D6651CCFEB3E001B982A /* AppDelegate.swift in Sources */,
 				4F3B939B1CFE1E4F000C1126 /* SensorViewController.swift in Sources */,
 			);
