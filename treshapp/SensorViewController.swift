@@ -12,6 +12,9 @@ import CocoaMQTT
 class SensorViewController: UIViewController {
     
     @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var waitingLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var sensor:Sensor!
     var mqtt: CocoaMQTT?
@@ -23,6 +26,8 @@ class SensorViewController: UIViewController {
         
         self.topic = "siot/DAT/\(AppConstants.centerGUID)/\(self.sensor.guid)"
         displayLabel.text = sensor.name
+        dataLabel.hidden = true
+        activityIndicator.startAnimating()
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: nil, usingBlock: { notification in
             self.connectMqtt()
@@ -70,6 +75,15 @@ class SensorViewController: UIViewController {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+
+    func displayData(data: String) {
+        activityIndicator.stopAnimating()
+        activityIndicator.hidden = true
+        dataLabel.hidden = false
+        dataLabel.text = data
+        waitingLabel.text = "Data received. Waiting for next udpate"
+        
+    }
 }
 
 
@@ -99,6 +113,7 @@ extension SensorViewController: CocoaMQTTDelegate {
     func mqtt(mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         print("didReceivedMessage: \(message.string) with id \(id)")
         NSNotificationCenter.defaultCenter().postNotificationName("MQTTMessageNotification" + "Foo", object: self, userInfo: ["message": message.string!, "topic": message.topic])
+        displayData(message.string!)
     }
     
     func mqtt(mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
